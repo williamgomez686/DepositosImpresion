@@ -1,0 +1,62 @@
+﻿@model IEnumerable<imprimirPDF.Models.Depositos>
+
+@{
+    ViewData["Title"] = "ImprimirPDF";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/pdf.css" />
+</head>
+<body>
+
+            @foreach (var item in Model)
+            {
+    <div class="container">
+        <div class="card">
+            <div class="card-header text-center">
+                <div class="">
+                    @Html.DisplayNameFor(model => item.NumeroLiquidacion) @Html.DisplayFor(model => item.NumeroLiquidacion)
+                </div>
+            </div>
+            <div class="card-body">
+
+                <div class="row align-items-start">
+                    <div class="col-md-9 text-center">@Html.DisplayFor(model => item.Serie) - @Html.DisplayFor(model => item.Numero) </div>
+                    <div class="col-md-2 text-right">Q. @Html.DisplayFor(model => item.Monto) </div>
+                </div>
+
+                <div class="row align-items-start">
+                    <div class="col-md-2 bg-danger">@Html.DisplayNameFor(model => model.clicod) </div>
+                    <div class="col-md-4 bg-primary">@Html.DisplayFor(model => item.clicod) </div>
+                </div>
+
+                <div class="row align-items-start">
+                    <div class="col-md-2 bg-danger">@Html.DisplayNameFor(model => item.FechaAlta) </div>
+                    <div class="col-md-4 bg-primary">@Html.DisplayFor(model => item.FechaAlta) </div>
+                </div>
+
+                <div class="row align-items-start">
+                    <div class="col-md-2 bg-danger">@Html.DisplayNameFor(model => item.ClienteRazon) </div>
+                    <div class="col-md-4 bg-primary">@Html.DisplayFor(model => item.ClienteRazon) </div>
+                </div>
+                <div class="row align-items-start">
+                    <div class="col-md-2 bg-danger">Cantidad @Html.DisplayNameFor(model => item.MontoLetras) </div>
+                    <div class="col-md-4 bg-primary"> @Html.DisplayFor(model => item.MontoLetras) </div>
+                </div>
+
+                <div class="text-right">
+                    <div class="col-md-11">@Html.DisplayNameFor(model => item.UsuAlt)-@Html.DisplayFor(model => item.UsuAlt)</div>
+                </div>
+            </div>
+        </div>
+        <br />
+    </div>
+            }
+<br /><br />
+
+    </body>
+</html>

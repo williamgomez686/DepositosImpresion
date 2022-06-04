@@ -1,0 +1,172 @@
+﻿@model IEnumerable<imprimirPDF.Models.ViewModels.FacturaViewModel>
+
+@{
+    ViewData["Title"] = "Qumran_factura";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/pdf.css" />
+</head>
+
+<body>
+    <div class="row">
+        <div class="text-center">
+
+            <label class="col-form-label" style="font-weight:normal; font-size:20px;">
+                RECURSOS Y LIBRERIA CRISTIANA.
+            </label>
+        </div>
+    </div>
+    <div class="form-group row">
+
+        <div class="text-center">
+            <label class="col-form-label" style="font-weight:bold; font-size:18px;">
+                QUMRAN, S.A.
+            </label>
+        </div>
+        <div class="text-center">
+            <label class="col-form-label" style="font-weight: bold; font-size: 18px;">
+                
+                <label class="col-form-label" style="font-size: 18px;">Calzada Roosevelt 2.61 Zona3</label>
+            </label>
+        </div>
+
+        <div class="text-center">
+            
+            <label class="col-form-label" style="font-size: 18px;">Colonia Cotio Mixco Guatemala.</label>
+        </div>
+        <div class="text-center">
+            2424-3500 / 24213500
+        </div>
+        <div class="text-center">
+            Nit 796711-k
+        </div>
+    </div>
+
+    <div class="form-group row">
+
+    </div>
+
+    <div class="form-group row">
+        <div class="text-center">            
+            <label class="col-form-label" style="font-size: 18px;">Número de Autorización:</label>
+        </div>
+        <div class="text-center">
+            <label class="col-form-label" style="font-size: 18px;">@DateTime.Now</label>
+        </div>
+        <div class="text-center">
+            <label class="col-form-label" style="font-size: 18px;">Fecha de Certificacion:</label>
+        </div>
+        <div class="text-center">
+            <label class="col-form-label" style="font-size: 18px;">@DateTime.Now.AddHours(12)</label>
+        </div>
+
+        <div class="text-center">
+            <label class="col-form-label" style="font-size: 18px;">Serie: </label>
+            <label class="col-form-label" style="font-size: 18px;">E </label>
+        </div>
+        <div class="text-center">
+            <label class="col-form-label" style="font-size: 18px;">Numero: </label>
+            <label class="col-form-label" style="font-size: 18px;">59951 </label>
+        </div>
+
+        <div class="text-center">
+            <label class="col-form-label" style="font-size: 18px;">Fecha: </label>
+            <label class="col-form-label" style="font-size: 18px;">@DateTime.Now </label>
+        </div>
+
+        <div class="text-center">
+            <label class="col-form-label" style="font-size: 18px;">Hora: </label>
+            <label class="col-form-label" style="font-size: 18px;">@DateTime.Now.Hour : @DateTime.Now.Minute : @DateTime.Now.Second </label>
+        </div>
+        <br />
+        <div class="text-left">
+            <label class="col-form-label" style="font-size: 18px;">Nit: </label>
+            <label class="col-form-label" style="font-size: 18px;">905847-5 </label>
+        </div>
+
+        <div class="text-left">
+            <label class="col-form-label" style="font-size: 18px;">Nombre: </label>
+            <label class="col-form-label" style="font-size: 18px;">Madeai Betzabe Molina Hidalgo </label>
+        </div>
+        <div class="text-left">
+            <label class="col-form-label" style="font-size: 18px;">Direccion: </label>
+            <label class="col-form-label" style="font-size: 18px;">CIUDAD</label>
+        </div>
+
+    </div>
+
+    <div>
+        <table class="table" style="height:17px;">
+            <thead class="">
+                <tr class="">
+
+                    <th style="text-align:left; font-weight: bold; font-size: 17px;">
+                        Cant
+                    </th>
+                    <th style="text-align:left; font-weight: bold; font-size: 17px;">
+                        Descripcón
+                    </th>
+                    <th style="text-align:left; font-weight: bold; font-size: 17px;">
+                        Cost Uni
+                    </th>
+                    <th style="text-align:left; font-weight: bold; font-size: 17px;">
+                        Monto
+                    </th>
+                </tr>
+            <thead>
+            <tbody style="height:15px;">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="font-size:15px;">
+                            3
+                        </td>
+                        <td style="font-size:15px;">
+                            TRATADO ILUSION OPTICA TARJETA VERDE Y ROJA EVANGELISMO
+                        </td>
+                        <td style="font-size:15px;">
+                            8
+                        </td>
+                        <td style="font-size:17px;">
+                            Q24
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <hr />
+    <div class="text-right">
+        <label class="col-form-label" style="font-size: 18px; font-weight: bold;">SubTotal:</label>
+        <label class="col-form-label" style="font-size: 18px;">Q85</label>
+    </div>
+    <div class="text-right">
+        <label class="col-form-label" style="font-size: 18px; font-weight: bold;">Descuento Total:</label>
+        <label class="col-form-label" style="font-size: 18px;">Q25</label>
+    </div>
+
+    <div class="text-right">
+        <label class="col-form-label" style="font-size: 18px; font-weight: bold;">Total:</label>
+        <label class="col-form-label" style="font-size: 18px; font-weight: bold;">Q90</label>
+    </div>
+    <hr />
+    <div class="text-center">
+        <label class="col-form-label" style="font-size: 18px;">Gracias por tu compra </label>
+    </div>
+    <div class="text-center">
+        <label class="col-form-label" style="font-size: 18px;">Esperamos que vuelvas pronto </label>
+    </div>
+    <div class="text-center">
+        <label class="col-form-label" style="font-size: 18px;">Cajero: </label>
+        <label class="col-form-label" style="font-size:18px;">WGOMEZ: </label>
+    </div>
+
+</body>
+
+</html>

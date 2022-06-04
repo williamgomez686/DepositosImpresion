@@ -1,0 +1,70 @@
+﻿@model imprimirPDF.Models.Depositos
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/pdf.css" />
+</head>
+    <body>
+        <div>
+            <hr />
+            <div class="container">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <div class="">
+                            @Html.DisplayNameFor(model => model.NumeroLiquidacion) @Html.DisplayFor(model => model.NumeroLiquidacion)
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row align-items-start">
+                            <div class="col-md-9 text-center">@Html.DisplayFor(model => model.Serie) - @Html.DisplayFor(model => model.Numero) </div>
+                            <div class="col-md-2 text-right">Q. @Html.DisplayFor(model => model.Monto) </div>
+                        </div>
+                        <dl class="row">
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.clicod)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.clicod)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.FechaAlta)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.FechaAlta)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.ClienteRazon)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.ClienteRazon)
+                            </dd>
+                            <dt class="col-sm-2">
+                                Cantidad @Html.DisplayNameFor(model => model.MontoLetras)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.MontoLetras)
+                            </dd>
+                        </dl>
+                            <div class="text-right">
+                                <div class="col-md-11">@Html.DisplayNameFor(model => model.UsuAlt)-@Html.DisplayFor(model => model.UsuAlt)</div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+</html>
+
+<div class="text-center">
+    @Html.ActionLink("Imprimir", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Atras</a>
+</div>
+

@@ -1,0 +1,91 @@
+﻿@model IEnumerable<imprimirPDF.Models.Depositos>
+
+@{
+    ViewData["Title"] = "ListaDepositosImprimir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Lista de Recibos de la liquidacion </h1>
+    
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.clicod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Serie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Numero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaAlta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClienteRazon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Monto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MontoLetras)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroPromesa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaiCod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechAlt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuAlt)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.clicod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Serie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Numero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaAlta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClienteRazon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Monto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MontoLetras)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroPromesa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaiCod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechAlt)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuAlt)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

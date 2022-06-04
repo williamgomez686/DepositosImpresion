@@ -1,0 +1,100 @@
+﻿@model IEnumerable<imprimirPDF.Models.ViewModels.FacturaViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PaiCod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmpCod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CliCod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TieCod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CajCod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacNotx)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacFecAlt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacANomD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.facDirFac)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacCanFac)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArtCod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacPreFac)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaiCod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpCod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CliCod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TieCod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CajCod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacNotx)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacFecAlt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacANomD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.facDirFac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacCanFac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArtCod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacPreFac)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div class="text-center">
+    <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-success">Salir</a>
+    <a asp-area="" asp-controller="PDF" asp-action="ImprimirPDF" class="btn btn-warning">imprimir</a>
+    <a asp-action="ImprimirPDF" class="btn btn-primary" asp-route-id ="@Model" target="_blank">
+        <i class="fas fa-print">imprimir</i>
+    </a>
+</div>

@@ -1,0 +1,33 @@
+﻿<input onclick="Obten()" type="button" value="Obtener" />
+
+<div class="card">
+    <div class="card-header">
+        <div id="cabecera">
+
+        </div>
+    </div>
+    <div class="card-body">
+        <div id="MiDiv">
+            <div id="res">
+                <table class="table ttable-striped table-bordered table-secondary">
+                    <thead>
+                        <tr>
+                            <th>Cantidad</th>
+                            <th>Articulo</th>
+                            <th>Descuento</th>
+                            <th>Precio</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/js/serialiaJson.js"></script>
+}

@@ -1,0 +1,80 @@
+﻿@{
+
+}
+<input onclick="Obten()" type="button" value="Obtener" />
+<div class="card">
+    <div class="card-header">
+        <div id="cabecera">
+
+        </div>
+    </div>
+    <div class="card-body">
+        <div id="MiDiv">
+            <div id="res">
+                <table class="table ttable-striped table-bordered table-secondary">
+                    <thead>
+                        <tr>
+                            <th>Cantidad</th>
+                            <th>Articulo</th>
+                            <th>Descuento</th>
+                            <th>Precio</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+<br />
+<script>
+    function Obten() {
+        fetch("@Url.Content("~/PDF/test")")
+            .then(function (res) {
+                return res.json();
+            })
+            .then(function (mijson) {
+                let detaller = document.querySelector('#cabecera')
+                console.log(mijson);
+                console.log("Cabecera");
+                console.log(mijson.facSer);
+                console.log(mijson.facNum);
+                console.log(mijson.fechAlt);
+                console.log(mijson.facHoraAlt);
+                console.log(mijson.facANit);
+                console.log(mijson.facANomDe);
+                console.log(mijson.facDirRent);
+                console.log("nivel detalle");
+                detaller.innerHTML = `Serie: <p> ${mijson.facSer}</p> <hr />`;
+                detaller.innerHTML = `Numero: <p> ${mijson.facNum}</p> <hr />`;
+                //detaller.innerHTML = `Fecha: <p> ${mijson.fechAlt}</p> <br />`;
+                //detaller.innerHTML = `Hora: <p> ${mijson.facHoraAlt}</p> <br />`;
+                //detaller.innerHTML = `NIT: <p> ${mijson.facANit}</p> <br />`;
+                //detaller.innerHTML = `Nombre: <p> ${mijson.facANomDe}</p> <br />`;
+                //detaller.innerHTML = `<p> ${mijson.facDirRent}</p> <hr>`;
+                console.log("un ciclo for");
+                let Resultado = document.querySelector('#tabla');
+                var resul ;
+                for (let i = 0; i < mijson.detalle.length; i++)
+                {
+                    console.log(mijson.detalle[i].facCanFac + " " + mijson.detalle[i].artCod + " " + mijson.detalle[i].facDes + " " + mijson.detalle[i].facPreFac )
+
+                    Resultado.innerHTML += `
+                    <tr>
+                        <td>${mijson.detalle[i].facCanFac}</td>
+                        <td>${mijson.detalle[i].artCod +` ` +mijson.detalle[i].articulo.artDesCor}</td>
+                        <td>${mijson.detalle[i].facDes}</td>
+                        <td>${mijson.detalle[i].facPreFac}</td>
+                        <td> ${resul = (parseInt(mijson.detalle[i].facCanFac)) * (parseInt(mijson.detalle[i].facPreFac))} </td>
+                    </tr>
+                    `;
+                }
+                console.log(mijson.detalle[1].articulo.artDesCor)
+                //<td>${mijson.detalle[i].artCod }</td>
+                //document.getElementById("#res").innerHTML = Resultado;
+            })
+    }
+</script>

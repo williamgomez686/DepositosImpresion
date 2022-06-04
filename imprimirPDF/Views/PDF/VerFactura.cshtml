@@ -1,0 +1,186 @@
+﻿@model IEnumerable<imprimirPDF.Models.Fac_Factura>
+
+@{
+    ViewData["Title"] = "VerFactura";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>VerFactura</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TieCod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CajCod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacNotx)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TtrCod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VenCod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CliCod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacANomDe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacANit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacDirFac)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacDirRent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacEst)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacObs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacIva)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacTasCam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacSer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacToFac)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacToDes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuAlt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacHoraAlt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaiCod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmpCod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechAlt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechMod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuAlt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuMod)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TieCod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CajCod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacNotx)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TtrCod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VenCod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CliCod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacANomDe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacANit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacDirFac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacDirRent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacEst)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacObs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacIva)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacTasCam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacSer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacToFac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacToDes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsuAlt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacHoraAlt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaiCod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpCod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechAlt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechMod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsuAlt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsuMod)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
