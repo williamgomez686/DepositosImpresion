@@ -16,7 +16,9 @@
             @foreach (var item in Model)
             {
     <div class="container">
+        <br /><br />
         <div class="card">
+
             <div class="card-header text-center">
                 <div class="">
                     @Html.DisplayNameFor(model => item.NumeroLiquidacion) @Html.DisplayFor(model => item.NumeroLiquidacion)
@@ -30,22 +32,22 @@
                 </div>
 
                 <div class="row align-items-start">
-                    <div class="col-md-2 bg-danger">@Html.DisplayNameFor(model => model.clicod) </div>
-                    <div class="col-md-4 bg-primary">@Html.DisplayFor(model => item.clicod) </div>
+                    <div class="col-md-2"><b>@Html.DisplayNameFor(model => model.clicod):</b> @Html.DisplayFor(model => item.clicod) </div>
+                    <div class="col-md-4"> </div>
                 </div>
 
                 <div class="row align-items-start">
-                    <div class="col-md-2 bg-danger">@Html.DisplayNameFor(model => item.FechaAlta) </div>
-                    <div class="col-md-4 bg-primary">@Html.DisplayFor(model => item.FechaAlta) </div>
+                    <div class="col-md-2"><b>@Html.DisplayNameFor(model => item.FechaAlta):</b> @Html.DisplayFor(model => item.FechaAlta)</div>
+                    <div class="col-md-4"> </div>
                 </div>
 
                 <div class="row align-items-start">
-                    <div class="col-md-2 bg-danger">@Html.DisplayNameFor(model => item.ClienteRazon) </div>
-                    <div class="col-md-4 bg-primary">@Html.DisplayFor(model => item.ClienteRazon) </div>
+                    <div class="col-md-2"><b>@Html.DisplayNameFor(model => item.ClienteRazon):</b> @Html.DisplayFor(model => item.ClienteRazon) </div>
+                    <div class="col-md-4"> </div>
                 </div>
                 <div class="row align-items-start">
-                    <div class="col-md-2 bg-danger">Cantidad @Html.DisplayNameFor(model => item.MontoLetras) </div>
-                    <div class="col-md-4 bg-primary"> @Html.DisplayFor(model => item.MontoLetras) </div>
+                    <div class="col-md-2"><b>Cantidad @Html.DisplayNameFor(model => item.MontoLetras):</b> @Html.DisplayFor(model => item.MontoLetras)</div>
+                    <div class="col-md-4">  </div>
                 </div>
 
                 <div class="text-right">
@@ -53,10 +55,8 @@
                 </div>
             </div>
         </div>
-        <br />
+        <br /><br /><br />
     </div>
             }
-<br /><br />
-
     </body>
 </html>
