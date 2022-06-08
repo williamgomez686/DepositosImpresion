@@ -48,18 +48,18 @@ namespace imprimirPDF.Controllers
             var servicios = new DepositosServicios();
             var result = servicios.ObtenerLiquidacion(id);
 
-            return View(result.OrderByDescending(n => n.Numero));
+           //return View(result.OrderByDescending(n => n.Numero));
 
-            //return new ViewAsPdf("ImprimirPDF", result)
-            //{
-            //    FileName = "Liq_" + id + DateTime.Now + ".pdf",
-            //    PageOrientation = Rotativa.AspNetCore.Options.Orientation.Portrait,
-            //    PageSize = Rotativa.AspNetCore.Options.Size.A4,
-            //    PageMargins = new Margins(0, 0, 0, 0),
-            //    CustomSwitches = "--page-offset 0 --footer-center [page] --footer-font-size 9",
-            //    PageWidth = 210,
-            //    PageHeight = 280
-            //};
+            return new ViewAsPdf("ImprimirPDF", result)
+            {
+                FileName = "Liq_" + id + DateTime.Now + ".pdf",
+                PageOrientation = Rotativa.AspNetCore.Options.Orientation.Portrait,
+                PageSize = Rotativa.AspNetCore.Options.Size.Legal,
+                PageMargins = new Margins(0, 0, 0, 0),
+                //CustomSwitches = "--page-offset 0 --footer-center [page] --footer-font-size 9",
+                PageWidth = 165,
+                PageHeight = 93
+            };
         }
     }
 }
