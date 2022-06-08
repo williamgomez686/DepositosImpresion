@@ -52,6 +52,10 @@ namespace imprimirPDF.Controllers
             return View();
         }
 
+        public IActionResult telerik()
+        {
+            return View();
+        }
         public JsonResult test()
         {
             var oVerFactura = new FacturaServicios();

@@ -6,6 +6,7 @@
 }
 
 <h1 class="text-center">Lista de depositos</h1>
+<div class="btn btn-primary">Imprimir</div>
 
 
 <table class="table table-bordered">
@@ -48,46 +49,51 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.clicod)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Serie)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Numero)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaAlta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClienteRazon)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Monto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumeroLiquidacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MontoLetras)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmpCod)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechAlt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UsuAlt)
-            </td>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.clicod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Serie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Numero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaAlta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClienteRazon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Monto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroLiquidacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MontoLetras)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpCod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechAlt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuAlt)
+                </td>
 
-            <td>
-                @Html.ActionLink("Ver", "Details", new {  id=item.Numero })
-            </td>
-        </tr>
-}
+                <td>
+                    @Html.ActionLink("Ver", "Details", new { id = item.Numero })
+                </td>
+            </tr>
+        }
+
+
     </tbody>
 </table>
+
+

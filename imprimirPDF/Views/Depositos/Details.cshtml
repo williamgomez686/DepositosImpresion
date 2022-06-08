@@ -2,69 +2,128 @@
 
 @{
     ViewData["Title"] = "Details";
-    Layout = null;
+    Layout = "_LayoutPrint";
 }
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/css/pdf.css" />
+
 </head>
-    <body>
-        <div>
-            <hr />
-            <div class="container">
-                <div class="card">
-                    <div class="card-header text-center">
-                        <div class="">
-                            @Html.DisplayNameFor(model => model.NumeroLiquidacion) @Html.DisplayFor(model => model.NumeroLiquidacion)
-                        </div>
+<body>
+    <div>
+        <hr />
+        <div class="container" id="render">
+            <div class="card">
+                <div class="card-header text-center">
+                    <div class="">
+                        @Html.DisplayNameFor(model => model.NumeroLiquidacion) @Html.DisplayFor(model => model.NumeroLiquidacion)
                     </div>
-                    <div class="card-body">
-                        <div class="row align-items-start">
-                            <div class="col-md-9 text-center">@Html.DisplayFor(model => model.Serie) - @Html.DisplayFor(model => model.Numero) </div>
-                            <div class="col-md-2 text-right">Q. @Html.DisplayFor(model => model.Monto) </div>
-                        </div>
-                        <dl class="row">
-                            <dt class="col-sm-2">
-                                @Html.DisplayNameFor(model => model.clicod)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.clicod)
-                            </dd>
-                            <dt class="col-sm-2">
-                                @Html.DisplayNameFor(model => model.FechaAlta)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.FechaAlta)
-                            </dd>
-                            <dt class="col-sm-2">
-                                @Html.DisplayNameFor(model => model.ClienteRazon)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.ClienteRazon)
-                            </dd>
-                            <dt class="col-sm-2">
-                                Cantidad @Html.DisplayNameFor(model => model.MontoLetras)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.MontoLetras)
-                            </dd>
-                        </dl>
-                            <div class="text-right">
-                                <div class="col-md-11">@Html.DisplayNameFor(model => model.UsuAlt)-@Html.DisplayFor(model => model.UsuAlt)</div>
-                            </div>
+                </div>
+                <div class="card-body">
+                    <div class="row align-items-start">
+                        <div class="col-md-9 text-center">@Html.DisplayFor(model => model.Serie) - @Html.DisplayFor(model => model.Numero) </div>
+                        <div class="col-md-2 text-right">Q. @Html.DisplayFor(model => model.Monto) </div>
+                    </div>
+                    <dl class="row">
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.clicod)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.clicod)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.FechaAlta)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.FechaAlta)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.ClienteRazon)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.ClienteRazon)
+                        </dd>
+                        <dt class="col-sm-2">
+                            Cantidad @Html.DisplayNameFor(model => model.MontoLetras)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.MontoLetras)
+                        </dd>
+                    </dl>
+                    <div class="text-right">
+                        <div class="col-md-11">@Html.DisplayNameFor(model => model.UsuAlt)-@Html.DisplayFor(model => model.UsuAlt)</div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-    </body>
+
+</body>
 
 </html>
 
 <div class="text-center">
-    @Html.ActionLink("Imprimir", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <div class="btn btn-primary export-pdf">Imprimir</div> |
     <a asp-action="Index">Atras</a>
 </div>
 
+
+<script>
+    $(document).ready(function () {
+
+        $(".export-pdf").click(function () {
+            //Convierte el elemento DOM en un dibujo usando kendo.drawing.drawDOM
+            kendo.drawing.drawDOM($("#render"))
+                .then(function (group) {
+                    // Renderizar el resultado como un archivo PDF
+                    return kendo.drawing.exportPDF(group, {
+                        paperSize: "auto",
+                        margin: { left: "1cm", top: "1cm", right: "1cm", bottom: "1cm" }
+                    });
+                })
+                .done(function (data) {
+                    // Guarda el archivo en PDF
+                    kendo.saveAs({
+                        dataURI: data,
+                        fileName: "HR-Dashboard.pdf",
+                        proxyURL: "https://demos.telerik.com/kendo-ui/service/export"
+                    });
+                });
+        });
+
+        $(".export-img").click(function () {
+            // Convert the DOM element to a drawing using kendo.drawing.drawDOM
+            kendo.drawing.drawDOM($(".content-wrapper"))
+                .then(function (group) {
+                    // Render the result as a PNG image
+                    return kendo.drawing.exportImage(group);
+                })
+                .done(function (data) {
+                    // Save the image file
+                    kendo.saveAs({
+                        dataURI: data,
+                        fileName: "HR-Dashboard.png",
+                        proxyURL: "https://demos.telerik.com/kendo-ui/service/export"
+                    });
+                });
+        });
+
+        $(".export-svg").click(function () {
+            // Convert the DOM element to a drawing using kendo.drawing.drawDOM
+            kendo.drawing.drawDOM($(".content-wrapper"))
+                .then(function (group) {
+                    // Render the result as a SVG document
+                    return kendo.drawing.exportSVG(group);
+                })
+                .done(function (data) {
+                    // Save the SVG document
+                    kendo.saveAs({
+                        dataURI: data,
+                        fileName: "HR-Dashboard.svg",
+                        proxyURL: "https://demos.telerik.com/kendo-ui/service/export"
+                    });
+                });
+        });
+    });
+</script>
