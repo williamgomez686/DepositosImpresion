@@ -6,15 +6,13 @@ using imprimirPDF.Models.ViewModels;
 using Oracle.ManagedDataAccess.Client;
 using System.Data;
 using imprimirPDF.Models;
+using imprimirPDF.common;
 
 namespace imprimirPDF.CapaNegocio
 {
 
     public class PromesaServicio
     {
-        public string Cadena = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.0.7)(PORT=1521)) (CONNECT_DATA=(SERVICE_NAME=MMC))); User Id=ADMINISTRADOR;Password=1nfabc123;";
-       // string consulta = "";
-
         public static PromesaServicio _instancia = null;
 
         private PromesaServicio()
@@ -39,9 +37,9 @@ namespace imprimirPDF.CapaNegocio
 
             try
             {
-                using (OracleConnection db = new OracleConnection(Cadena))
+                using (OracleConnection db = new OracleConnection(Parametros.CadenaConnexion))
                 {
-                    string consulta = @"SELECT CLICOD Codigo, CLIRAZSOC Razon, CLINOM Nombre, CLITEL1 Celular, CLITEL2 Casa, CLITEL3 Otro, CLINIT NIT, CLIEMA Email,
+                    string consulta = @"SELECT EMPCOD, CLICOD Codigo, CLIRAZSOC Razon, CLINOM Nombre, CLITEL1 Celular, CLITEL2 Casa, CLITEL3 Otro, CLINIT NIT, CLIEMA Email,
                 CLIFECALT FechaAlta, CLIUSUALT UsuarioAlta, CLIEST Estatus, CLISHESTCIV EstadoCivil, CLINUMDOC DPI_POSIBLE, CLISHSEX Genero, CLISHNOMPAD Padre,
                 CLISHNOMMAD Madre, CLISHNOMCON Conyuge, CLIPERFAMDIOS PerteneceIglesia, CLICODMIEMBRO CodigoMiebro, CLISHUGCMUNCOD CodMun, PROFCOD, 
 				CLISHDIRACT Direccion, CLISHUGCDEPCOD codDepto, CLISHUGCMUNCOD codMun, CLISHUGCZONCOD zona, CLISOCHON
@@ -56,6 +54,40 @@ namespace imprimirPDF.CapaNegocio
                         {
                             while (dr.Read())
                             {
+                                #region otra forma de cargar al cliente
+                                //var buscaCliente = new CXC_Clientes();
+                                //{
+                                //    buscaCliente.EmpCod = Convert.ToString(dr["EMPCOD"]);
+                                //    buscaCliente.CODIGO = Convert.ToString(dr["Codigo"]);
+                                //    buscaCliente.RAZON = Convert.ToString(dr["Razon"]);
+                                //    buscaCliente.NOMBRE = Convert.ToString(dr["Nombre"]);
+                                //    buscaCliente.CELULAR = Convert.ToString(dr["Celular"]);
+                                //    buscaCliente.CASA = Convert.ToString(dr["Casa"]);
+                                //    buscaCliente.OTRO = Convert.ToString(dr["Otro"]);
+                                //    buscaCliente.NIT = Convert.ToString(dr["NIT"]);
+                                //    buscaCliente.EMAIL = Convert.ToString(dr["Email"]);
+                                //    buscaCliente.FechAlt = Convert.ToDateTime(dr["FechaAlta"]);
+                                //    buscaCliente.UsuAlt = Convert.ToString(dr["UsuarioAlta"]);
+                                //    buscaCliente.ESTATUS = Convert.ToString(dr["Estatus"]);
+                                //    buscaCliente.ESTADOCIVIL = Convert.ToString(dr["EstadoCivil"]);
+                                //    buscaCliente.DPI_POSIBLE = Convert.ToString(dr["DPI_POSIBLE"]);
+                                //    buscaCliente.GENERO = Convert.ToString(dr["Genero"]);
+                                //    buscaCliente.PADRE = Convert.ToString(dr["Padre"]);
+                                //    buscaCliente.MADRE = Convert.ToString(dr["Madre"]);
+                                //    buscaCliente.CONYUGE = Convert.ToString(dr["Conyuge"]);
+                                //    buscaCliente.PERTENECEIGLESIA = Convert.ToString(dr["PerteneceIglesia"]);
+                                //    buscaCliente.CODIGOMIEBRO = Convert.ToString(dr["CodigoMiebro"]);
+                                //    buscaCliente.CODMUN = Convert.ToString(dr["CodMun"]);
+                                //    buscaCliente.PROFCOD = Convert.ToString(dr["PROFCOD"]);
+                                //    buscaCliente.DIRECCION = Convert.ToString(dr["Direccion"]);
+                                //    buscaCliente.CODDEPTO = Convert.ToString(dr["codDepto"]);
+                                //    buscaCliente.ZONA = Convert.ToString(dr["zona"]);
+                                //    buscaCliente.CLISOCHON = Convert.ToString(dr["CLISOCHON"]);
+                                //}
+
+                                //oClientes.Add(buscaCliente);
+                                #endregion
+
                                 oClientes.Add(new CXC_Clientes()
                                 {
                                     EmpCod = Convert.ToString(dr["EMPCOD"]),
@@ -73,20 +105,17 @@ namespace imprimirPDF.CapaNegocio
                                     ESTADOCIVIL = Convert.ToString(dr["EstadoCivil"]),
                                     DPI_POSIBLE = Convert.ToString(dr["DPI_POSIBLE"]),
                                     GENERO = Convert.ToString(dr["Genero"]),
-
-                                    //PADRE = Convert.ToString(dr["Genero"]),
-                                    //MADRE = Convert.ToString(dr["Genero"]),
-                                    //CONYUGE = Convert.ToString(dr["Genero"]),
-                                    //PERTENECEIGLESIA = Convert.ToString(dr["Genero"]),
-                                    //CODIGOMIEBRO = Convert.ToString(dr["Genero"]),
-                                    //CODMUN = Convert.ToString(dr["Genero"]),
-                                    //GENERO = Convert.ToString(dr["Genero"]),
-                                    //GENERO = Convert.ToString(dr["Genero"]),
-                                    //GENERO = Convert.ToString(dr["Genero"]),
-                                    //GENERO = Convert.ToString(dr["Genero"]),
-
-                                    //GENERO = Convert.ToString(dr["Genero"]),
-                                    //FacFecAlt = dr.GetDateTime(0),
+                                    PADRE = Convert.ToString(dr["Padre"]),
+                                    MADRE = Convert.ToString(dr["Madre"]),
+                                    CONYUGE = Convert.ToString(dr["Conyuge"]),
+                                    PERTENECEIGLESIA = Convert.ToString(dr["PerteneceIglesia"]),
+                                    CODIGOMIEBRO = Convert.ToString(dr["CodigoMiebro"]),
+                                    CODMUN = Convert.ToString(dr["CodMun"]),
+                                    PROFCOD = Convert.ToString(dr["PROFCOD"]),
+                                    DIRECCION = Convert.ToString(dr["Direccion"]),
+                                    CODDEPTO = Convert.ToString(dr["codDepto"]),
+                                    ZONA = Convert.ToString(dr["zona"]),
+                                    CLISOCHON = Convert.ToString(dr["CLISOCHON"]),
                                 });
                             }
                         }
@@ -94,7 +123,7 @@ namespace imprimirPDF.CapaNegocio
                     return oClientes;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
                 throw;
