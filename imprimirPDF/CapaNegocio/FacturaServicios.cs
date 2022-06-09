@@ -205,22 +205,22 @@ namespace imprimirPDF.CapaNegocio
                 {
                     reader.Read();
 
-                    var Cliente = new CXC_Cliente
-                    {
-                        PaiCod = reader.GetString(0),
-                        EmpCod = reader.GetString(1),
-                        CliCod = reader.GetString(2),
-                        CliRazSoc = reader.GetString(3),
-                        //CliTel1 = reader.GetString(4),
-                        CliNit = reader.GetString(4),
-                        CliDirFac = reader.GetString(5),
-                        CliFecAlt = reader.GetDateTime(6),
-                        CliUsuAlt = reader.GetString(7),
-                        CliEst = reader.GetString(8),
-                        CliNom = reader.GetString(9)
-                        //CliShFchNac = reader.GetDateTime(11),
-                        //CliShSex = reader.GetString(12)
-                    };
+                    //var Cliente = new CXC_Cliente
+                    //{
+                    //    PaiCod = reader.GetString(0),
+                    //    EmpCod = reader.GetString(1),
+                    //    CliCod = reader.GetString(2),
+                    //    CliRazSoc = reader.GetString(3),
+                    //    //CliTel1 = reader.GetString(4),
+                    //    CliNit = reader.GetString(4),
+                    //    CliDirFac = reader.GetString(5),
+                    //    CliFecAlt = reader.GetDateTime(6),
+                    //    CliUsuAlt = reader.GetString(7),
+                    //    CliEst = reader.GetString(8),
+                    //    CliNom = reader.GetString(9)
+                    //    //CliShFchNac = reader.GetDateTime(11),
+                    //    //CliShSex = reader.GetString(12)
+                    //};
                 }
             }
             catch (System.Exception ex)

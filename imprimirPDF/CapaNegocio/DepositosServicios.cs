@@ -183,5 +183,75 @@ namespace imprimirPDF.CapaNegocio
                 throw;
             }
         }
+
+        public IEnumerable<Depositos> GetAll()
+        {
+            var cadena = Parametros.CadenaConnexion;
+            var ListDeposito = new List<Depositos>();
+
+            var consulta = @"SELECT a.EMPCOD, 
+                                    b.clicod cliente,  
+                                    b.LIQCAJRECSER serie, 
+                                    b.liqcajrecnum numero, 
+                                    a.liqcajfch fecha, 
+                                    cc.CLIRAZSOC Nombre, 
+                                    (LiqCajRutaMonAbo * LiqCajDetTasCam)monto, 
+                                    a.LIQCAJNUM NoLiquidacion, 
+                                    LIQCAJUSUALT Usuario, 
+                                    b.LIQCAJRUTANUMDOC NoPromesa 
+                                from REC_LIQUIDACIONES a
+	                                join REC_LIQUIDACIONESRECIBOS b
+	                                    on a.PAICOD = b.PAICOD
+	                                    and a.EMPCOD = b.EMPCOD
+	                                    and a.LIQCAJCOD = b.LIQCAJCOD
+	                                    and a.LIQCAJNUM = b.LIQCAJNUM
+    	                                JOIN  CXC_CLIENTES cc 
+    		                                ON a.PAICOD = cc.PAICOD 
+    		                                AND a.EMPCOD = cc.EMPCOD 
+    		                                AND b.CLICOD = cc.CLICOD 
+                                where a.PAICOD = '00001'
+                                and a.EMPCOD = '00001'
+                                and a.LiqCajSta <> 'AN' 
+                                and b.LiqCajRecNum <> 0
+                                and b.LiqCajRutaMonAbo > 0 
+                                and b.LiqCajMotCod = 9 --motivo
+                                and a.LiqCajTipRutCod in ( ' ','DDI')
+                                AND a.LIQCAJFCH <= '01/05/2022' AND  a.LIQCAJFCH >= '01/04/2022'";
+            try
+            {
+                using (var context = new OracleConnection(cadena))
+                {
+                    context.Open();
+
+                    var cmd = new OracleCommand(consulta, context);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var oDeposito = new Depositos();
+                            {
+                                oDeposito.EmpCod = Convert.ToString(reader["EMPCOD"]);
+                                oDeposito.clicod = Convert.ToString(reader["cliente"]);
+                                oDeposito.Serie = Convert.ToString(reader["serie"]);
+                                oDeposito.Numero = Convert.ToInt32(reader["numero"]);
+                                oDeposito.FechaAlta = Convert.ToDateTime(reader["fecha"]);
+                                oDeposito.ClienteRazon = Convert.ToString(reader["Nombre"]);
+                                oDeposito.Monto = Convert.ToDouble(reader["monto"]);
+                                oDeposito.NumeroLiquidacion = Convert.ToInt64(reader["NoLiquidacion"]);//parametro de busqueda
+                                oDeposito.UsuAlt = Convert.ToString(reader["Usuario"]);
+                            };
+                            oDeposito.MontoLetras = convertir.enletras(oDeposito.Monto.ToString());
+                            ListDeposito.Add(oDeposito);
+                        }
+                    }
+                }
+                return ListDeposito;
+            }
+            catch (Exception error)
+            {
+                var error1 = error.Message;
+                throw;
+            }
+        }
     }
 }

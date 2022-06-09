@@ -22,7 +22,6 @@ namespace imprimirPDF.Controllers
 
             return View(test);
         }
-
         // GET: DepositosController/Details/5
         public ActionResult Details(int id)
         {
@@ -31,7 +30,6 @@ namespace imprimirPDF.Controllers
 
             return View(test);
         }
-
         public IActionResult ListaDepositos()
         {
             return View();
@@ -42,7 +40,6 @@ namespace imprimirPDF.Controllers
             var result = servicios.ObtenerLiquidacion(id);
             return View(result);
         }
-
         public IActionResult ImprimirPDF(long id)
         {
             var servicios = new DepositosServicios();
@@ -60,6 +57,13 @@ namespace imprimirPDF.Controllers
                 PageWidth = 165,
                 PageHeight = 93
             };
+        }
+
+        public IActionResult GetAllDepositos()
+        {
+            var servicios = new DepositosServicios();
+            var result = servicios.GetAll();
+            return View(result);
         }
     }
 }
