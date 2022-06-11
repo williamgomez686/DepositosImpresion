@@ -1,0 +1,67 @@
+﻿@model imprimirPDF.Models.CXC_Clientes
+
+@{ 
+    ViewData["Title"] = "Modal Test";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="width:100%;">
+    <div class="col-6">
+        <h2 class="text-primary">Titulo general</h2>
+    </div>
+    <div class="col-md-4 text-right">
+        <button type="button" class="btn btn-info form-control" data-toggle="modal" data-target="#Mymodal">Crear</button>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="Mymodal" role="dialog">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <form method="post" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h2 class="modal-title text-primary text-center">Este es el titulo</h2>
+                    <button type="button" class="close" data-dismiss="modal">&tilde;</button>
+                </div>
+
+                <div class="modal-body">
+                    <div style="padding-left:15%; padding-right:15%;padding-bottom:30px;">
+                        <div class="row p-3 border-0">
+                            <div class="text-danger" asp-validation-summary="ModelOnly"> </div>
+                        </div>
+
+                        <div class="form-row" style="padding-top:14px;">
+                            <div class="form-group col-md-6">
+                                <label>nombres</label>
+                                <input asp-for="NOMBRE" class="form-control" placeholder="Nombres xd" />
+                                <span class="text-danger" asp-validation-for="NOMBRE"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Codigo</label>
+                                <input asp-for="CODIGO" class="form-control" placeholder="Codigo" />
+                                <span class="text-danger" asp-validation-for="CODIGO"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>CELULAR</label>
+                                <input asp-for="CELULAR" class="form-control" placeholder="CELULAR" />
+                                <span class="text-danger" asp-validation-for="CELULAR"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Direccion</label>
+                                <input class="form-control" asp-for="DIRECCION" placeholder="Direccion" />
+                                <span class="text-danger" asp-validation-for="DIRECCION"></span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-success">OK</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
