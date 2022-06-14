@@ -49,5 +49,8 @@ namespace imprimirPDF.Models
         public string CODMUN { get; set; }
         public string ZONA { get; set; }
         public string CLISOCHON { get; set; }
+        [Display(Name = "Fecha Nacimiento")]
+        public DateTime FechaNacimiento { get; set; }
+        public IEnumerable<CXC_Captaciones> Promesas { get; set; }
     }
 }

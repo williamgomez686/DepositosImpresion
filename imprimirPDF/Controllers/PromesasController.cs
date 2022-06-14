@@ -15,5 +15,12 @@ namespace imprimirPDF.Controllers
            
             return View();
         }
+
+        public IActionResult ClientesXPromesa()
+        {
+            var result = PromesaServicio.Instancia.ClinetesById("380777");
+            var hola = result;
+            return View(hola);
+        }
     }
 }
